@@ -1,0 +1,70 @@
+
+    <!-- <div class="movies" *ngIf="movieList">
+      <table class="table">
+        <thead >
+          <tr >
+            <th scope="col">Title </th>
+            <th scope="col">Overview</th>
+            <th scope="col">Imdb Rating</th>
+            <th scope="col" >Director</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="movie" (dblclick)="editMovie(movie)" *ngFor="let movie of movieList">
+            <ng-container *ngIf="!editMovies.includes(movie); else editTD">
+              <td>{{movie.title}}</td>
+              <td>{{movie.overview}}</td>
+              <td>{{movie.imdb_rating}}</td>
+              <td>{{movie.director}}</td>
+
+            </ng-container>
+            <ng-template #editTD>
+              <td><input type="text" name="title" id="title" (keypress)="submitMovie($event, movie)" [(ngModel)]="movie.title"
+                  placeholder="Title" class="form-control"></td>
+              <td><input type="text" name="overview" id="overview" (keypress)="submitMovie($event, movie)" [(ngModel)]="movie.overview"
+                  placeholder="Overview" class="form-control"></td>
+              <td><input type="text" name="imdb_rating" id="imdb_rating" (keypress)="submitMovie($event, movie)"
+                  [(ngModel)]="movie.imdb_rating" placeholder="Imdb Rating" class="form-control"></td>
+              <td><input type="text" name="director" id="director" (keypress)="submitMovie($event, movie)" [(ngModel)]="movie.director"
+                  placeholder="Director" class="form-control"></td>
+
+            </ng-template>
+            <td>
+              <button class="btn btn-primary btn-sm" (click)="editMovie(movie)">
+                <span class="oi oi-pencil"></span>
+              </button>
+              <button (click)="deleteMovie(movie)" class="btn btn-danger btn-sm">
+                <span class="oi oi-trash"></span>
+              </button>
+            </td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+<form>
+        <div class="form-row">
+          <div class="col-md-10">
+            <input type="text" name="title" id="title" [(ngModel)]="newMovie.title" placeholder="Title" class="form-control">
+          </div>
+
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-primary" (click)="create()">Add</button>
+          </div>
+        </div>
+      </form>
+   -->
+
+
+<div id="outer">
+
+  <ul class="movies">
+    <li *ngFor="let movie of movieList " >
+      <a [routerLink]="['/movie', movie.movie_id]">
+        <!-- <span class="badge">{{ movie.movie_id }}</span>  -->
+        {{ movie.title }}
+      </a>
+    </li>
+  </ul>
+</div>
