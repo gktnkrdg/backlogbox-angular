@@ -1,15 +1,15 @@
 
-<div id="outer">
-
-  <ul class="movies">
-    <li *ngFor="let movie of movieList " >
-      <a [routerLink]="['/movie', movie.movie_id]">
-        <!-- <span class="badge">{{ movie.movie_id }}</span>  -->
-        {{ movie.title  | titlecase }}
-      </a>
-    </li>
-  </ul>
-</div>
+<mat-list>
+  <h3 mat-subheader>Folders</h3>
+  <mat-list-item *ngFor="let movie of movieList" class="movies">
+    <a [routerLink]="['/movie', movie.movie_id]">
+      <!-- <span class="badge">{{ movie.movie_id }}</span>  -->
+      {{ movie.title  | titlecase }}
+    </a>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+ 
+</mat-list>
 <form>
   <div class="form-row">
     <div class="col-md-10">

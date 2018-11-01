@@ -11,7 +11,7 @@ import { MoviesModule } from './pages/movies/movies.module';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
-
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatSidenavContainer } from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +26,13 @@ import { Router } from '@angular/router';
 
     AppRoutingModule,
     HttpClientModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatCardModule,
+    MatSidenavModule,
   ],
   providers: [MovieService,TheMovieDbService],
   bootstrap: [AppComponent]

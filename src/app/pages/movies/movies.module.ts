@@ -4,12 +4,14 @@ import { FormsModule }    from '@angular/forms';
 import { MovieListComponent }    from './movie-list/movie-list.component';
 import { MoviesRoutesModule } from './movie-routing.module';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     MoviesRoutesModule,
+    MaterialModule
   ],
   declarations: [
     MovieListComponent,
