@@ -4,6 +4,7 @@ import { TheMovieDbService } from '../../../services/themoviedb.service';
 import Movie from '../../../models/movie.model';
 import { Router } from '@angular/router';
 import { TheMovieDbMovieModel } from '../../../models/themoviedb/movie.model';
+import { TheMovieDbCrewModel } from 'src/app/models/themoviedb/moviecrew.model';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class MovieListComponent implements OnInit{
   
   testLint : String
   theMovieDbResult: TheMovieDbMovieModel
+  theMovieDbCrewModel:TheMovieDbCrewModel
   movieList: Movie[];
   editMovies: Movie[] = [];
   constructor(
@@ -45,11 +47,14 @@ export class MovieListComponent implements OnInit{
         this.theMovieDbResult = data[0];
         this.newMovie.overview = this.theMovieDbResult.overview;
         this.newMovie.title = this.theMovieDbResult.title;
-      console.log(this.theMovieDbResult)
+      console.log(this.theMovieDbResult.id)
       
-        this.theMovieDbService.getMovieCreditsById(this.theMovieDbResult.id).subscribe((data) => {
+        this.theMovieDbService.getMovieCrewById(this.theMovieDbResult.id).subscribe((data) => {
+          this.theMovieDbCrewModel  = data[0];
+          this.newMovie.director = this.theMovieDbCrewModel.name
             this.movieService.createMovie(this.newMovie)
             .subscribe((res) => {
+              
             this.movieList.push(res.data)
             this.newMovie = new Movie()
         })

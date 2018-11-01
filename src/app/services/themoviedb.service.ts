@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { TheMovieDbDetailsModel } from '../models/themoviedb/moviedetails.model';
 import { TheMovieDbMovieModel } from '../models/themoviedb/movie.model';
 import { TheMovieDbCreditsModel } from '../models/themoviedb/moviecreditsmodel';
+import { TheMovieDbCrewModel } from '../models/themoviedb/moviecrew.model';
 
 @Injectable()
 export class TheMovieDbService {
@@ -47,12 +48,12 @@ export class TheMovieDbService {
     console.log(this.api_execute_url)
     return this.http.jsonp(this.api_execute_url,'callback').pipe(map(res => res['results']  ));
   } 
-  getMovieCreditsById(id:number):Observable<TheMovieDbCreditsModel>{
-    console.log(id)
+  getMovieCrewById(id:number):Observable<TheMovieDbCrewModel>{
+   
     this.api_execute_url= `${this.url_movie}/${id}/credits?api_key=${this.api_key}&language=tr-TR`;
-    console.log(this.api_execute_url)
+    
  
-    return this.http.jsonp(this.api_execute_url,'callback').pipe(map(res =>res['results'] ));
+    return this.http.jsonp(this.api_execute_url,'callback').pipe(map(res =>res['crew'] ));
   }
   
 }

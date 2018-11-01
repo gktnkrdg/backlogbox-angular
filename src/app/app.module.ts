@@ -8,19 +8,34 @@ import { MovieService } from './services/movie.service';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { TheMovieDbService } from './services/themoviedb.service';
 import { MoviesModule } from './pages/movies/movies.module';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Router } from '@angular/router';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
     HttpClientJsonpModule,
-    AppRoutingModule, FormsModule,
+    MoviesModule,
+
+    AppRoutingModule,
     HttpClientModule,
-    MoviesModule
   ],
   providers: [MovieService,TheMovieDbService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  // Diagnostic only: inspect router configuration
+  constructor(router: Router) {
+    // Use a custom replacer to display function names in the route configs
+    // const replacer = (key, value) => (typeof value === 'function') ? value.name : value;
+
+    // console.log('Routes: ', JSON.stringify(router.config, replacer, 2));
+  }
+}

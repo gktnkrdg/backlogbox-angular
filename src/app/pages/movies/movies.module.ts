@@ -1,20 +1,19 @@
 import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
 import { FormsModule }    from '@angular/forms';
-
 import { MovieListComponent }    from './movie-list/movie-list.component';
-
-
 import { MoviesRoutesModule } from './movie-routing.module';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    MoviesRoutesModule
+    MoviesRoutesModule,
   ],
   declarations: [
-    MovieListComponent
+    MovieListComponent,
+    MovieDetailComponent 
   ]
 })
 export class MoviesModule {}

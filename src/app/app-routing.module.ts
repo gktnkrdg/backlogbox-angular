@@ -1,11 +1,10 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-
-
-
 import { AuthGuard }                          from './auth/auth.guard';
 import { MovieListComponent } from './pages/movies/movie-list/movie-list.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import Movie from './models/movie.model';
 
 const appRoutes: Routes = [
   // {
@@ -18,8 +17,9 @@ const appRoutes: Routes = [
   //   loadChildren: './admin/admin.module#AdminModule',
   //   canLoad: [AuthGuard]
   // },
-  // { path: '',   redirectTo: '/superheroes', pathMatch: 'full' },
-  { path: '**', component: MovieListComponent }
+
+  { path: '',   redirectTo: '/movies', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

@@ -42,6 +42,13 @@ export class MovieService {
       return res;
     }))
   }
+  getMovieById(id:number): Observable<Movie>{
+    var getUrl = `${this.movieUrl}/${id}`
+    return this.http.get(getUrl)
+    .pipe(
+      map(res => res["data"] as Movie) // or any other operator
+    )
+  }
 
   //Default Error handling method.
   private handleError(error: any): Promise<any> {
