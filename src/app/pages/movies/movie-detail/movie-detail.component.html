@@ -1,24 +1,29 @@
-
 <div *ngIf="movie">
-  <h3>"{{ movie.title }}"</h3>
+  <h3>{{ movie.title_en }}</h3>
   <div>
     <label>Id: </label>{{ movie.movie_id }}</div>
   <div>
-    <label>Name: </label>
-    <input [(ngModel)]="movie.title" placeholder="name"/>
+    <label>Name: </label>{{ movie.title_en }}
   </div>
   <div>
-    <label>Overivew: </label>
-    <textarea type="text" id="form7" class="md-textarea form-control"  [(ngModel)]="movie.overview" ></textarea>
+    <label><b>Director:</b> </label>{{ movie.director }}
   </div>
   <div>
-    <label>Director: </label>{{ movie.director }}</div>
+    <label><b>Genres:</b> </label>{{ movie.genres }}
+  </div>
   <div>
-  <a routerLink="/movies" routerLinkActive="active">Back</a>
+    <label><b>Release Date:</b> </label>{{ movie.release_date  | date: 'dd/MM/yyyy'}}
+  </div>
+  <div>
+    <label><b>The Movie DB Rating:</b> </label>{{ movie.themoviedb_rating }}
+  </div>
+  <div>
+    <label><b>Tagline:</b> </label>{{ movie.tagline}}
+  </div>
+  <div>
+    <label><b>Overview:</b> </label>{{ movie.overview }}
+  </div>
+  <div>
+    <a routerLink="/movies" routerLinkActive="active">Back</a>
+  </div>
 </div>
-
-<!-- 
-Copyright 2017-2018 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
--->

@@ -3,9 +3,9 @@
 
   <ul class="movies">
     <li *ngFor="let movie of movieList " >
-      <a [routerLink]="['/movie', movie.title]">
+      <a [routerLink]="['/movie', movie.movie_id]">
         <!-- <span class="badge">{{ movie.movie_id }}</span>  -->
-        {{ movie.title }}
+        {{ movie.title  | titlecase }}
       </a>
     </li>
   </ul>

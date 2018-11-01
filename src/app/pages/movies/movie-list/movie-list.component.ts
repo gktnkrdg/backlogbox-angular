@@ -1,10 +1,11 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../../services/movie.service';
 import { TheMovieDbService } from '../../../services/themoviedb.service';
 import Movie from '../../../models/movie.model';
 import { Router } from '@angular/router';
 import { TheMovieDbMovieModel } from '../../../models/themoviedb/movie.model';
 import { TheMovieDbCrewModel } from 'src/app/models/themoviedb/moviecrew.model';
+import { TheMovieDbGenreModel } from 'src/app/models/themoviedb/moviegenre.model';
 
 
 @Component({
@@ -13,11 +14,11 @@ import { TheMovieDbCrewModel } from 'src/app/models/themoviedb/moviecrew.model';
   styleUrls: ['./movie-list.component.css']
 })
 
-export class MovieListComponent implements OnInit{
-  
-  testLint : String
+export class MovieListComponent implements OnInit {
+
+  testLint: String
   theMovieDbResult: TheMovieDbMovieModel
-  theMovieDbCrewModel:TheMovieDbCrewModel
+  theMovieDbCrewModel: TheMovieDbCrewModel
   movieList: Movie[];
   editMovies: Movie[] = [];
   constructor(
@@ -26,61 +27,80 @@ export class MovieListComponent implements OnInit{
     private router: Router,
     private theMovieDbService: TheMovieDbService
   ) {
-   
-   }
-   public newMovie: Movie = new Movie()
+
+  }
+  public newMovie: Movie = new Movie()
 
 
 
 
   ngOnInit(): void {
-  this.movieService.getMovies()
-    .subscribe(movies => {
-      this.movieList = movies
-    })
+    this.movieService.getMovies()
+      .subscribe(movies => {
+        this.movieList = movies
+      })
   }
- 
+
   create() {
     this.theMovieDbService.getMovieIdByTitle(this.newMovie.title).subscribe(
       data => {
-        console.log(data)
-        this.theMovieDbResult = data[0];
-        this.newMovie.overview = this.theMovieDbResult.overview;
-        this.newMovie.title = this.theMovieDbResult.title;
-      console.log(this.theMovieDbResult.id)
-      
-        this.theMovieDbService.getMovieCrewById(this.theMovieDbResult.id).subscribe((data) => {
-          this.theMovieDbCrewModel  = data[0];
-          this.newMovie.director = this.theMovieDbCrewModel.name
-            this.movieService.createMovie(this.newMovie)
-            .subscribe((res) => {
-              
-            this.movieList.push(res.data)
-            this.newMovie = new Movie()
-        })
+        
+        if (data.length>0) {
+          this.theMovieDbResult = data[0];
+          this.newMovie.overview = this.theMovieDbResult.overview;
+          this.newMovie.title = this.newMovie.title;
+          this.theMovieDbService.getMovieDetailyById(this.theMovieDbResult.id).subscribe((data) => {
+            console.log(data)
+            this.newMovie.tagline = data.tagline
+            this.newMovie.themoviedb_rating = data.vote_average.toString()
+            this.newMovie.title_en = data.title
+            var genre = "";
+            data.genres.forEach(_genre => {
+              genre = genre + "," + _genre.name
+            })
+            this.newMovie.genres = genre;
+            this.newMovie.release_date = new Date(data.release_date);
+
+
+            this.theMovieDbService.getMovieCrewById(this.theMovieDbResult.id).subscribe((data) => {
+              if (data.length > 0) {
+                this.theMovieDbCrewModel = data[0];
+                this.newMovie.director = this.theMovieDbCrewModel.name
+
+              }
+              this.movieService.createMovie(this.newMovie)
+                .subscribe((res) => {
+
+                  this.movieList.push(res.data)
+                  this.newMovie = new Movie()
+                })
+
+            })
+
+          })
+        }
       })
-    })
   }
 
   editMovie(movie: Movie) {
-   
+
     if (this.movieList.includes(movie)) {
       if (!this.editMovies.includes(movie)) {
         this.editMovies.push(movie)
       } else {
         this.editMovies.splice(this.editMovies.indexOf(movie), 1)
         this.movieService.editMovie(movie).subscribe(res => {
-        
+
         }, err => {
           this.editMovie(movie)
-        
+
         })
       }
     }
   }
 
   doneMovie(movie: Movie) {
-    
+
     this.movieService.editMovie(movie).subscribe(res => {
       console.log('Update Succesful')
     }, err => {

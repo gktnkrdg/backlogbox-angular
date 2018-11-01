@@ -27,7 +27,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       {
-        enableTracing: false
+        enableTracing: false,
+        useHash:true
       }
     )
   ],

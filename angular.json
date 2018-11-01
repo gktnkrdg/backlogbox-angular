@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "realtimeNgTable": {
+    "backlogbox-angular": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/realtimeNgTable",
+            "outputPath": "dist/backlogbox-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -59,18 +59,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "realtimeNgTable:build"
+            "browserTarget": "backlogbox-angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "realtimeNgTable:build:production"
+              "browserTarget": "backlogbox-angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "realtimeNgTable:build"
+            "browserTarget": "backlogbox-angular:build"
           }
         },
         "test": {
@@ -104,7 +104,7 @@
         }
       }
     },
-    "realtimeNgTable-e2e": {
+    "backlogbox-angular-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -113,11 +113,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "realtimeNgTable:serve"
+            "devServerTarget": "backlogbox-angular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "realtimeNgTable:serve:production"
+              "devServerTarget": "backlogbox-angular:serve:production"
             }
           }
         },
@@ -133,5 +133,5 @@
       }
     }
   },
-  "defaultProject": "realtimeNgTable"
+  "defaultProject": "backlogbox-angular"
 }
