@@ -1,6 +1,6 @@
 
 <mat-list>
-  <h3 mat-subheader>Folders</h3>
+  <h3 mat-subheader>Movies</h3>
   <mat-list-item *ngFor="let movie of movieList" class="movies">
     <a [routerLink]="['/movie', movie.movie_id]">
       <!-- <span class="badge">{{ movie.movie_id }}</span>  -->
@@ -10,14 +10,10 @@
   <mat-divider></mat-divider>
  
 </mat-list>
-<form>
-  <div class="form-row">
-    <div class="col-md-10">
-      <input type="text" name="title" id="title" [(ngModel)]="newMovie.title" placeholder="Title" class="form-control">
-    </div>
-
-    <div class="col-md-2">
-      <button type="submit" class="btn btn-primary" (click)="create()">Add</button>
-    </div>
-  </div>
+<form class="example-form">
+  <mat-form-field class="full-width">
+    <input  matInput  type="text" name="title" id="title" [(ngModel)]="newMovie.title" placeholder="Title" >
+  </mat-form-field>
 </form>
+
+
