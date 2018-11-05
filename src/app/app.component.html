@@ -1,20 +1,16 @@
-<mat-toolbar >
-  <mat-toolbar-row>
- 
-      <span><img src="./../assets/logo.png" style="height: 65px;   "></span>
-  
-  
-  </mat-toolbar-row>
-</mat-toolbar>
+<solution-header>
+
+</solution-header>
+
 <mat-sidenav-container class="example-container">
   <mat-sidenav #drawer mode="side" opened role="navigation">
     <mat-nav-list>
       <a mat-list-item routerLink='/todo'>Todo</a>
       <a mat-list-item routerLink='/movies'>Movies</a>
-      
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
+ 
 </mat-sidenav-container>

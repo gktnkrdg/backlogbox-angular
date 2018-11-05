@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MovieService } from '../../../services/movie.service';
 import { TheMovieDbService } from '../../../services/themoviedb.service';
 import Movie from '../../../models/movie.model';
@@ -6,12 +6,14 @@ import { Router } from '@angular/router';
 import { TheMovieDbMovieModel } from '../../../models/themoviedb/movie.model';
 import { TheMovieDbCrewModel } from 'src/app/models/themoviedb/moviecrew.model';
 import { TheMovieDbGenreModel } from 'src/app/models/themoviedb/moviegenre.model';
+import { MatDialog} from '@angular/material';
+import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 
 
 @Component({
   selector: 'app-list-employee',
   templateUrl: './movie-list.component.html',
-  styleUrls: ['./movie-list.component.css']
+  styleUrls: ['./movie-list.component.scss']
 })
 
 export class MovieListComponent implements OnInit {
@@ -21,11 +23,14 @@ export class MovieListComponent implements OnInit {
   theMovieDbCrewModel: TheMovieDbCrewModel
   movieList: Movie[];
   editMovies: Movie[] = [];
+  name: any;
+  animal: any;
   constructor(
     //Private todoservice will be injected into the component by Angular Dependency Injector
     private movieService: MovieService,
     private router: Router,
-    private theMovieDbService: TheMovieDbService
+    private theMovieDbService: TheMovieDbService,
+    public dialog: MatDialog
   ) {
 
   }
@@ -39,6 +44,25 @@ export class MovieListComponent implements OnInit {
       .subscribe(movies => {
         this.movieList = movies
       })
+  }
+  clickMessage = '';
+
+  onClickMe() {
+    this.clickMessage = 'You are my hero!';
+    console.log(this.clickMessage)
+  }
+ 
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '250px',
+      data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
 
   create() {
