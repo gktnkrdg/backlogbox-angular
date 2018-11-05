@@ -20,6 +20,9 @@ import { DialogComponent } from './components/dialog/dialog.component';
     AppComponent,
     PageNotFoundComponent,HeaderComponent,DialogComponent
   ],
+  entryComponents: [
+    DialogComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

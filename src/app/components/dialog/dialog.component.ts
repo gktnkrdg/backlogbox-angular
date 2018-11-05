@@ -7,7 +7,8 @@ export interface DialogData {
   }
 
 @Component({
-    selector: 'backlog-dialog'
+    selector: 'backlog-dialog',
+    templateUrl: './dialog.component.html',
   })
   export class DialogComponent {
   
@@ -18,5 +19,6 @@ export interface DialogData {
     onNoClick(): void {
       this.dialogRef.close();
     }
+
   
   }
