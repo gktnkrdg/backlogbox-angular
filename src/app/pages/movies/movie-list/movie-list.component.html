@@ -15,7 +15,11 @@
 <footer >
     <form class="example-form">
         <mat-form-field class="full-width">
+<<<<<<< HEAD
           <input  matInput  type="text"  placeholder="Search Movie"  (click)="openModal('custom-modal-1')" autocomplete="off" >
+=======
+          <input  matInput  type="text" name="title" id="title" [(ngModel)]="newMovie.title" placeholder="Search Movie Olmazsa popup birden fazla cıkarsa popup başarılı mesaj sonrası popup"  (click)="openDialog()" >
+>>>>>>> 320f0d421c6c9a06be489d233a995af9e7efd84c
           <mat-icon matSuffix>mode_edit</mat-icon>
           <!-- <button  mat-raised-button color="primary" type="submit"  (click)="create()">Add</button> -->
           <button mat-button *ngIf="newMovie.title" matSuffix mat-icon-button aria-label="Clear" (click)="newMovie.title=''">
