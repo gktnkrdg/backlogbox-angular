@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 
 import MovieModel  from '../../../models/movie.model';
-import { MovieService } from 'src/app/services/movie.service';
+import { MovieService } from '../../../services/movie.service';
 
 @Component({
   selector: 'app-Movie-detail',

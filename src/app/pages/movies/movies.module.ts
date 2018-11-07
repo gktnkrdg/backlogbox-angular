@@ -4,7 +4,8 @@ import { FormsModule }    from '@angular/forms';
 import { MovieListComponent }    from './movie-list/movie-list.component';
 import { MoviesRoutesModule } from './movie-routing.module';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
-import { MaterialModule } from 'src/app/material.module';
+import { MaterialModule } from '../../material.module';
+import {ModalComponent} from '../../directives/modal.component'
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { MaterialModule } from 'src/app/material.module';
   ],
   declarations: [
     MovieListComponent,
-    MovieDetailComponent 
+    MovieDetailComponent ,
+    ModalComponent
   ]
 })
 export class MoviesModule {}

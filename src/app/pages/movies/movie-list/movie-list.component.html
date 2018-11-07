@@ -15,7 +15,7 @@
 <footer >
     <form class="example-form">
         <mat-form-field class="full-width">
-          <input  matInput  type="text" name="title" id="title" [(ngModel)]="newMovie.title" placeholder="Search Movie"  (click)="openDialog()" >
+          <input  matInput  type="text"  placeholder="Search Movie"  (click)="openModal('custom-modal-1')" autocomplete="off" >
           <mat-icon matSuffix>mode_edit</mat-icon>
           <!-- <button  mat-raised-button color="primary" type="submit"  (click)="create()">Add</button> -->
           <button mat-button *ngIf="newMovie.title" matSuffix mat-icon-button aria-label="Clear" (click)="newMovie.title=''">
@@ -23,12 +23,33 @@
             </button>
         </mat-form-field>
       
-     
+    
        
        
         
       </form>
   </footer>
-
-
+  <jw-modal id="custom-modal-1" class="full-width">
+    <h1>Search Movies</h1>
+    <form class="example-form">
+    <mat-form-field >
+        <input  matInput   type="text" name="title" id="title" [(ngModel)]="newMovie.title" placeholder="Search Movie"   autocomplete="off" >
+       
+      
+      
+        <!-- <button mat-button *ngIf="newMovie.title" matSuffix mat-icon-button aria-label="Clear" (click)="newMovie.title=''"> -->
+         
+      </mat-form-field>
+      <button   mat-raised-button color="primary"  (click)="searchMovie()">Add</button> 
+    </form>
+  
+        <ul *ngFor="let movie of theMovieDbResults; let i = index" [attr.data-index]="i" class="movies">
+            <li  (click)="createMovie(i)">
+               {{movie.title}}   {{movie.original_title==movie.title ? '' :  '(' +movie.original_title + ')'}}
+            </li>
+        </ul>
+</jw-modal>
+<jw-modal id="custom-modal-2" class="half-width">
+    <h1>Successfull</h1>
+</jw-modal>
 
