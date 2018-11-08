@@ -15,16 +15,7 @@ import { MaterialModule } from './material.module';
 import { ModalService } from './services/modal.service';
 import { ModalComponent } from './directives/modal.component';
 @NgModule({
-<<<<<<< HEAD
-=======
-  declarations: [
-    AppComponent,
-    PageNotFoundComponent,HeaderComponent,DialogComponent
-  ],
-  entryComponents: [
-    DialogComponent
-  ],
->>>>>>> 320f0d421c6c9a06be489d233a995af9e7efd84c
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
