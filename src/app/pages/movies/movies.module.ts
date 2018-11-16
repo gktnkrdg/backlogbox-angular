@@ -6,13 +6,20 @@ import { MoviesRoutesModule } from './movie-routing.module';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MaterialModule } from '../../material.module';
 import {ModalComponent} from '../../directives/modal.component'
-
+import {RatingModule} from 'primeng/rating';
+import {DialogModule} from 'primeng/dialog';
+import {InputTextModule} from 'primeng/inputtext';
+import {ButtonModule} from 'primeng/button';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     MoviesRoutesModule,
-    MaterialModule
+    MaterialModule,
+    RatingModule,
+    DialogModule,
+    InputTextModule,
+    ButtonModule
   ],
   declarations: [
     MovieListComponent,

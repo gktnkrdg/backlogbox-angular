@@ -14,6 +14,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { MaterialModule } from './material.module';
 import { ModalService } from './services/modal.service';
 import { ModalComponent } from './directives/modal.component';
+import {MenuModule} from 'primeng/menu';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
 @NgModule({
 
   imports: [
@@ -25,6 +27,8 @@ import { ModalComponent } from './directives/modal.component';
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
+    MenuModule,
+    ScrollPanelModule
   ],
   declarations: [
     AppComponent,

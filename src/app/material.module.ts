@@ -38,7 +38,7 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule,
+  MatTreeModule
 } from '@angular/material';
 
 @NgModule({
@@ -82,6 +82,7 @@ import {
     MatTooltipModule,
     MatTreeModule,
     ScrollingModule,
+    
   ],
   imports: [
     CdkTableModule,
@@ -123,6 +124,7 @@ import {
     MatTooltipModule,
     MatTreeModule,
     ScrollingModule,
+    
   ]
 })
 export class MaterialModule {}

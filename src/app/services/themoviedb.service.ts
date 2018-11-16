@@ -37,20 +37,19 @@ export class TheMovieDbService {
   
   }
 
-  //Read todo, takes no arguments
   getMovieIdByTitle(title:string):Observable<TheMovieDbMovieModel[]>{
-    this.api_execute_url= `${this.url_search}?api_key=${this.api_key}&query=${title}&language=tr-TR`;
+    this.api_execute_url= `${this.url_search}?api_key=${this.api_key}&query=${title}`;
     console.log(this.api_execute_url)
     return this.http.get(this.api_execute_url).pipe(map(res =>res['results']));
   }
   getMovieDetailyById(id:number) :any{
-    this.api_execute_url= `${this.url_movie}/${id}?api_key=${this.api_key}&language=tr-TR`;
+    this.api_execute_url= `${this.url_movie}/${id}?api_key=${this.api_key}`;
     console.log(this.api_execute_url)
     return this.http.jsonp(this.api_execute_url,'callback');
   } 
   getMovieCrewById(id:number):Observable<TheMovieDbCrewModel[]>{
    
-    this.api_execute_url= `${this.url_movie}/${id}/credits?api_key=${this.api_key}&language=tr-TR`;
+    this.api_execute_url= `${this.url_movie}/${id}/credits?api_key=${this.api_key}`;
     
  
     return this.http.jsonp(this.api_execute_url,'callback').pipe(map(res =>res['crew'] ));

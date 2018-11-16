@@ -35,7 +35,7 @@ export class MovieListComponent implements OnInit {
 
   }
   public newMovie: Movie = new Movie()
-
+  display: boolean = false;
 
 
 
@@ -63,7 +63,7 @@ export class MovieListComponent implements OnInit {
   searchMovie() {
     this.theMovieDbService.getMovieIdByTitle(this.newMovie.title).subscribe(
       data => {
-         console.log(data)
+        this.theMovieDbResults  = []
         if (data.length > 0) {
           // this.theMovieDbResult = data[0];
           this.theMovieDbResults = data;
@@ -108,6 +108,9 @@ export class MovieListComponent implements OnInit {
     })
   
   }
+  showDialog() {
+    this.display = true;
+}
 
   editMovie(movie: Movie) {
 
