@@ -7,8 +7,9 @@
     <mat-card-title>{{ movie.title_en }}</mat-card-title>
     <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
   </mat-card-header>
-  <img mat-card-image src="https://image.tmdb.org/t/p/w200/yE5d3BUhE8hCnkMUJOo1QDoOGNz.jpg" alt="Photo of a Shiba Inu">
+  <img src="https://image.tmdb.org/t/p/w200/{{ movie.image_url }}  " alt="Photo of a Shiba Inu">
   <mat-card-content>
+  
     <div>
       <label>Id: </label>{{ movie.movie_id }}</div>
     <div>

@@ -76,12 +76,14 @@ export class MovieListComponent implements OnInit {
     console.log(this.theMovieDbResult)
     this.newMovie.overview = this.theMovieDbResult.overview;
     this.newMovie.title = this.theMovieDbResult.title;
+   
     this.theMovieDbService.getMovieDetailyById(this.theMovieDbResult.id).subscribe((data) => {
       console.log("test ",data.tagline )
      
         this.newMovie.tagline = data.tagline
         this.newMovie.themoviedb_rating = data.vote_average.toString()
         this.newMovie.title_en = data.title
+        this.newMovie.image_url = data.poster_path;
         var genre = "";
         data.genres.forEach(_genre => {
           genre = genre + "," + _genre.name
